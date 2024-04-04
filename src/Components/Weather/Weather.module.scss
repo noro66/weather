@@ -1,0 +1,22 @@
+@import "../../assets/Scss/Variables";
+.weatherContainer {
+  display: flex;
+  align-items: stretch;
+  min-height: 50vh;
+  text-align: center;
+}
+.weatherInfo {
+  display: flex;
+  align-items: center;
+  min-height: 50vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.temperature {
+  font-size: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  gap: $weather-info-gap;
+}
