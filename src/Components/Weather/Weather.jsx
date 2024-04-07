@@ -4,20 +4,25 @@ import PositionSvg from "../Svgs/PositionSvg";
 import DefaultWeatherSvg from "../Svgs/DefaultWeatherSvg";
 import ThermometerSvg from "../Svgs/ThermometerSvg";
 import TimeSvg from "../Svgs/TimeSvg";
+import {useSelector} from "react-redux";
 export  const Weather = (props) => {
+    const weather = useSelector(state => state.weather);
+    console.log(weather);
     return (
         <>
             <Card className={`text-center  ${style.weatherContainer}`}>
                 <Card.Body>
                     <Card.Title >
-                        Casablanca MA <PositionSvg/>
+                        {weather.name} {weather.sys.country} <PositionSvg/>
                     </Card.Title>
-                    <Card.Text as={'div'}  className={`${style.weatherInfo}`}>
+                    <Card.Text as={'div'} className={style.weatherInfo}>
+
                         <div>
-                           <DefaultWeatherSvg/>
+                            <DefaultWeatherSvg/>
                         </div>
+                        <div>{weather.weather[0].description}</div>
                         <div className={style.temperature}>
-                            <span>35 </span>
+                            <span>{weather.main.temp} </span>
                             <span><ThermometerSvg/></span>
                         </div>
                         <div>
@@ -27,15 +32,15 @@ export  const Weather = (props) => {
                         <div className={'d-flex justify-content-evenly gap-2'}>
                             <div>
                                 <div>SunRise</div>
-                                <div>09:09</div>
+                                <div>{weather.sys.sunrise}</div>
                             </div>
                             <div>
                                 <div>Wind</div>
-                                <div>34km</div>
+                                <div>{weather.wind.speed}</div>
                             </div>
                             <div>
                                 <div>temperature</div>
-                                <div>34 C</div>
+                                <div>{weather.main.temp} C</div>
                             </div>
                         </div>
                     </Card.Text>
